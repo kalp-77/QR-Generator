@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ScanQrFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#414547"
-        tools:context=".ScanQR">
+        android:orientation="vertical"
+        android:background="#414547">
 
         <com.budiyev.android.codescanner.CodeScannerView
             android:id="@+id/scanner_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:autoFocusButtonColor="@color/white"
             app:autoFocusButtonVisible="true"
             app:flashButtonColor="@color/teal_200"
             app:flashButtonVisible="true"
             app:frameAspectRatioHeight="1"
             app:frameAspectRatioWidth="1"
-            app:frameColor="@color/white"
+            app:frameColor="@color/btnEnabled"
             app:frameCornersRadius="15dp"
             app:frameCornersSize="70dp"
             app:frameSize="0.75"
             app:frameThickness="3dp"
-            app:layout_constraintBottom_toTopOf="@+id/card_view_usage"
-            app:layout_constraintTop_toTopOf="parent"
             app:maskColor="#414547" />
 
         <androidx.cardview.widget.CardView
@@ -41,11 +38,7 @@
             app:cardUseCompatPadding="true"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginBottom="200dp"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_marginBottom="200dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -70,6 +63,5 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </LinearLayout>
 </FrameLayout>

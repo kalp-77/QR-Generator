@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.QrCodeFragment">
 
-    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/baseline_arrow_back_24"
+                android:layout_marginTop="20dp"
+                android:padding="2dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="20dp">
+
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@id/logo"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="Edit"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:gravity="center" />
+
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/qrImage"
@@ -16,23 +45,23 @@
             android:layout_height="500dp"
             tools:layout_editor_absoluteX="100dp"
             tools:layout_editor_absoluteY="156dp" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="34dp"
-            android:layout_marginEnd="34dp"
-            android:layout_marginTop="5dp"
-            app:iconGravity="textStart"
-            android:textColor="#000000"
-            android:padding="15dp"
-            app:rippleColor="#92FFFFFF"
-            android:backgroundTint="#888AED"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/btnEnabled"
+            android:gravity="center"
+            android:layout_margin="30dp"
+            android:padding="10dp"
             android:text="Save"
+            android:textColor="#ffff"
             android:textSize="16dp"
-            app:strokeColor="#FFFFFF"
-            app:cornerRadius="8dp"/>
-
+            app:cornerRadius="8dp"
+            app:iconGravity="textStart"
+            app:rippleColor="#92FFFFFF"
+            app:strokeColor="#FFFFFF" />
 
 
     </LinearLayout>

@@ -3,6 +3,7 @@ package com.example.qrgenerator.fragments
 import android.R.attr.button
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.CalendarContract.Colors
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -47,10 +48,11 @@ class HomeFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable) {
                 if(s.isNotEmpty()){
-                    binding.create.setBackgroundColor(Color.CYAN)
+                    binding.create.setBackgroundColor(resources.getColor(R.color.btnEnabled))
+                    binding.create.isClickable = true
                     binding.create.setOnClickListener {
                         val textToEncode = binding.textEt.text.toString()
-                        if (textToEncode != null) {
+                        if (textToEncode.isNotEmpty()) {
                             viewModel.data.value = textToEncode
                             val transaction = fragmentManager?.beginTransaction()
                             transaction?.replace(R.id.container, QrCodeFragment())
@@ -61,7 +63,7 @@ class HomeFragment : Fragment() {
                     }
                 }
                 else {
-                    binding.create.setBackgroundColor(Color.BLACK)
+                    binding.create.setBackgroundColor(resources.getColor(R.color.btnDisbled))
                     binding.create.setOnClickListener {
                         Toast.makeText(requireContext(), "Please enter text to generate Qr", Toast.LENGTH_SHORT).show()
                     }

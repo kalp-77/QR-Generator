@@ -3,11 +3,13 @@
     <item
         android:id="@+id/page_1"
         android:enabled="true"
+        android:iconTint="@color/btnEnabled"
         android:icon="@drawable/baseline_qr_code_24"
         android:title="create"/>
     <item
         android:id="@+id/page_2"
         android:enabled="true"
+        android:iconTint="@color/btnEnabled"
         android:icon="@drawable/baseline_qr_code_scanner_24"
         android:title="sacn"/>
 </menu>

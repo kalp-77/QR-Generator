@@ -1,18 +1,25 @@
 package com.example.qrgenerator.fragments
 
+import android.app.SearchManager
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
 import android.webkit.URLUtil
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
@@ -20,6 +27,8 @@ import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.example.qrgenerator.R
 import com.example.qrgenerator.databinding.FragmentScanQrBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
+
 
 class ScanQrFragment : Fragment() {
 
@@ -28,6 +37,9 @@ class ScanQrFragment : Fragment() {
     private var _binding: FragmentScanQrBinding? = null
     private val binding get() = _binding!!
     private lateinit var codeScanner: CodeScanner
+    private lateinit var result : TextView
+    private lateinit var search : Button
+    private lateinit var copy : ImageView
 
 
     override fun onCreateView(
@@ -36,6 +48,7 @@ class ScanQrFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentScanQrBinding.inflate(inflater, container, false)
+
 
         return binding.root
     }
@@ -65,7 +78,7 @@ class ScanQrFragment : Fragment() {
                     intent.data = Uri.parse(it.text)
                     startActivity(intent)
                 } else {
-                    binding.result.text = it.text
+                    openDialog(it.text.toString())
                 }
             }
         }
@@ -109,5 +122,31 @@ class ScanQrFragment : Fragment() {
             codeScanner.releaseResources()
         }
         super.onPause()
+    }
+
+    private fun openDialog(data:String) {
+        val dialogView: View = layoutInflater.inflate(R.layout.bottom_sheet, null)
+        result = dialogView.findViewById(R.id.res)
+        result.text = data
+
+        search = dialogView.findViewById(R.id.search)
+        search.setOnClickListener {
+            val intent = Intent(Intent.ACTION_WEB_SEARCH);
+            intent.putExtra(SearchManager.QUERY, data);
+            startActivity(intent)
+        }
+
+        copy = dialogView.findViewById(R.id.copy)
+        copy.setOnClickListener{
+            val clipboardManager = activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clipData = ClipData.newPlainText("text", data)
+            clipboardManager.setPrimaryClip(clipData)
+            Toast.makeText(requireContext(), "Text copied to clipboard", Toast.LENGTH_LONG).show()
+        }
+
+        val dialog = BottomSheetDialog(requireContext())
+        dialog.setContentView(dialogView)
+
+        dialog.show()
     }
 }

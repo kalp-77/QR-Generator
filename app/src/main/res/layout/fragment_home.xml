@@ -9,10 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="#FDFDFD"
         tools:context=".MainActivity">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -45,36 +47,57 @@
         </RelativeLayout>
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="320dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:background="#E5F7FF"
-            app:expandedHintEnabled="false"
-            app:hintEnabled="false"
-            app:prefixText="Text:"
-            app:boxCornerRadiusBottomEnd="6dp"
-            app:boxCornerRadiusBottomStart="6dp"
-            app:boxCornerRadiusTopEnd="6dp"
-            app:boxCornerRadiusTopStart="6dp"
-
-            app:prefixTextAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:prefixTextColor="#354C5E">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textEt"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="#E5F7FF"
+            android:background="@color/white">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="top"
-                android:textColor="@color/black"
-                android:background="@android:color/transparent"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#21384A"
+                    android:paddingTop="15dp"
+                    android:paddingStart="15dp"
+                    android:textSize="15dp"
+                    android:text="Enter Text : "
+                    />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#E5F7FF"
+                    app:expandedHintEnabled="false"
+                    app:hintEnabled="false"
+                    app:boxCornerRadiusBottomEnd="6dp"
+                    app:boxCornerRadiusBottomStart="6dp"
+                    app:boxCornerRadiusTopEnd="6dp"
+                    app:boxCornerRadiusTopStart="6dp"
+                    app:prefixTextAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:prefixTextColor="#354C5E">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="top"
+                        android:textColor="@color/black"
+                        android:background="@android:color/transparent"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/create"
@@ -87,10 +110,10 @@
             android:textColor="#FFFFFF"
             android:padding="15dp"
             app:rippleColor="#92FFFFFF"
-            android:backgroundTint="#939597"
-            android:text="Login"
+            android:backgroundTint="#B0BEC5"
+            android:text="Create"
             android:textSize="16dp"
-            app:strokeColor="#7BBAFF"
+            app:strokeColor="@color/btnDisbled"
             app:cornerRadius="8dp"/>
 
 

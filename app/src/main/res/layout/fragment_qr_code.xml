@@ -50,18 +50,19 @@
             android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/btnEnabled"
-            android:gravity="center"
-            android:layout_margin="30dp"
-            android:padding="10dp"
-            android:text="Save"
-            android:textColor="#ffff"
-            android:textSize="16dp"
-            app:cornerRadius="8dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginEnd="34dp"
+            android:layout_marginTop="5dp"
             app:iconGravity="textStart"
-            app:rippleColor="#92FFFFFF"
-            app:strokeColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:padding="15dp"
+            app:rippleColor="#8DD5F8FF"
+            android:backgroundTint="@color/btnEnabled"
+            android:text="Save"
+            android:textSize="16dp"
+            app:strokeColor="@color/btnDisbled"
+            app:cornerRadius="8dp"/>
+
 
 
     </LinearLayout>
